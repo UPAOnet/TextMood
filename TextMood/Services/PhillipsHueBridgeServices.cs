@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using Plugin.Settings;
 using Plugin.Connectivity;
+using Q42.HueApi;
 
 namespace TextMood
 {
@@ -13,6 +14,17 @@ namespace TextMood
 		{
 			get => CrossSettings.Current.GetValueOrDefault(nameof(PhillipsHueBridgeIPAddress), string.Empty);
 			set => CrossSettings.Current.AddOrUpdateValue(nameof(PhillipsHueBridgeIPAddress), value);
+		}
+
+        public static async Task Temp()
+		{
+			var authClient = new RemoteAuthenticationClient("IShHigzKTbhYv8FIAf5x3ynSAEi5uwFB", "kkI4h3m4JAsGMkTa", "5788fede-988a-40fc-bd92-c81824659243");
+			var authUrl = authClient.BuildAuthorizeUri("sample", "consoleapp");
+
+			var client = new HttpClient();
+
+			var result = await client.GetStringAsync(authUrl);
+
 		}
 
 		public static async ValueTask<HttpResponseMessage> UpdateLightBulbColor(int hue)
