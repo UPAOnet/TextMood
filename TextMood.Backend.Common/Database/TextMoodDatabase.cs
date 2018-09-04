@@ -14,8 +14,7 @@ namespace TextMood.Backend.Common
     public static class TextMoodDatabase
     {
         #region Constant Fields
-        readonly static string _connectionString = "Server=tcp:textmooddserver.database.windows.net,1433;Initial Catalog=TextMoodDatabase;Persist Security Info=False;User ID=bminnick;Password=*()_+iomega28;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
-            //Environment.GetEnvironmentVariable("TextMoodDatabaseConnectionString");
+        readonly static string _connectionString = Environment.GetEnvironmentVariable("TextMoodDatabaseConnectionString");
         #endregion
 
         #region Methods
